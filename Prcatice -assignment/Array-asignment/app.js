@@ -51,3 +51,8 @@
 // 2015. Add movies one by one in an array. Display the elements
 // & length of array in your browser. (Use array’s length method)
 
+// / let education=["SSC", "HSC", "BCS", "BS", "BCOM", "MS", "M. Phil"," PhD"]
+//     // document.write(`1) ${education[0]} <br/ > 2) ${education[1]} <br/ > 3) ${education[2]} <br/ > 4) ${education[3]} <br/ > 5) ${education[4]} <br/ > 6) ${education[5]} <br/ > 7) ${education[6]}  `)
+
+
+
