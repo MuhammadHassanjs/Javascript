@@ -1,0 +1,90 @@
+// 1.	Create a block of code that you can use several times. 
+
+// function Multipleuser(){
+//   console.log("hello world")  
+// }
+// Multipleuser()
+
+// 2.	Write a function that displays current date & time in your browser.
+
+//  const h1=document.querySelector("#date")
+//  const t2me=document.querySelector("#time")
+// function wholedate(){
+//     h1.innerHTML += `${new Date().getDate()} ${new Date().getMonth()} ${new Date().getFullYear()}`
+//     h2.innerHTML += `${new Date().getHours()} : ${new Date().getMinutes()} : ${new Date().getSeconds()}`
+// }
+// wholedate()
+
+// 3.	Write a function that takes first & last name and then it greets the user using his full name.
+
+//  const h1=document.querySelector("#date")
+// const firstName=prompt("Write Your First name ?")
+// const lastName=prompt("Write Your Last name ?")
+
+// function fullName(){
+//     h1.innerHTML += `${firstName} ${lastName}`
+// }
+// fullName()
+
+// 4.	Write a function that adds two numbers (input by user) and returns the sum of two numbers.
+
+    //  const h1=document.querySelector("#date")
+    // const num1= +prompt("Write thfe First Number ?")
+    // const num2= +prompt("Write thfe Seconf Number ?")
+    // function add(){
+    //     const sumofall=num1+num2
+    //     h1.innerHTML += `${sumofall}`
+    // }
+    // add()
+
+    // 5.	 Calculator: 
+    // Write a function that takes three arguments num1, num2 & operator & compute the desired operation. Return and show the desired result in your browser.
+    
+    //  const h1=document.querySelector("#date")
+    // const num1=+prompt("Write thfe First Number ?")
+    // const num2=+prompt("Write thfe Seconf Number ?")
+    // const sum= prompt("Write the operator ?")
+
+    // function add(){
+    //     const sumall=sum.trim()
+    //     if(num1== ""){
+    //         alert("Write the First number ?")
+    //     }
+    //     else if(num2== ""){
+    //         alert("Write the Second number ?")
+    //     }
+    //     if (sumall == "+"){
+    //         h1.innerHTML += num1+num2
+    //     }
+    //     else if(sumall == "-"){
+    //         h1.innerHTML += num1-num2
+    //     }
+    //     else if(sumall == "*"){
+    //         h1.innerHTML += num1*num2
+    //     }  
+    //     else if(sumall== ""){
+    //         alert("Write the Operator ?")
+    //     }
+        
+    // }
+    // add()
+    
+    // 6.	 Write a function that squares its argument.
+
+    // const h1=document.querySelector("#date")
+    // const num1=+prompt("Write the Number you want to square ?")
+
+    // function add(){
+    //     h1.innerHTML += `${num1*num1}`
+    // }
+    // add()
+
+    // 7.	 Write a function that computes factorial of a number.
+    
+    const h1=document.querySelector("#date")
+    const num1=+prompt("Write the Number you want to square ?")
+    for(x=0;x<num1;i++){
+        factorial(num1)
+    }
+
+
