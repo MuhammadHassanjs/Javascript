@@ -1,0 +1,64 @@
+// 1) Write a program that takes a positive integer from user &
+// display the following in your browser.
+// a. number
+// b. round off value of the number
+// c. floor value of the number
+// d. ceil value of the number 
+
+// const num=+prompt("Write a positive integer ?")
+// let para1=document.querySelector("#para1")
+// let para2=document.querySelector("#para2")
+// let para3=document.querySelector("#para3")
+// let para4=document.querySelector("#para4")
+
+// para1.innerHTML+=`Number : ${(num)}`
+// para2.innerHTML+=`Round off value : ${Math.round(num)}`
+// para3.innerHTML+=`Floor value : ${Math.floor(num)}`
+// para4.innerHTML+=`Ceil value : ${Math.ceil(num)}`
+
+
+// 2) Write a program that takes a negative integer from user &
+// display the following in your browser.
+// a. number
+// b. round off value of the number
+// c. floor value of the number
+// d. ceil value of the number 
+
+
+// const num=-prompt("Write a negative integer ?")
+// let para1=document.querySelector("#para1")
+// let para2=document.querySelector("#para2")
+// let para3=document.querySelector("#para3")
+// let para4=document.querySelector("#para4")
+
+// para1.innerHTML+=`Number : ${(num)}`
+// para2.innerHTML+=`Round off value : ${Math.round(num)}`
+// para3.innerHTML+=`Floor value : ${Math.floor(num)}`
+// para4.innerHTML+=`Ceil value : ${Math.ceil(num)}`
+
+// 5)Write a program that displays the absolute value of a number.
+// E.g. absolute value of -4 is 4 & absolute value of 5 is 5 
+
+    // let num=+prompt("Write a number you want to change I absolute number")
+    // let para1=document.querySelector("#para1")
+    // para1.innerHTML +=`the absolute value of ${num} is ${Math.abs(num)} `
+
+// 6) Write a program that simulates a dice using random() method
+// of JS Math class. Display the value of dice in your browser.
+
+    // let num=+prompt("Write a dice Number")
+    // let para1=document.querySelector("#para1")
+    // let hello=Math.ceil(Math.random()*6)
+    // console.log(hello)
+    // if(num===hello){
+    //     para1.innerHTML += `Congratulations you won the  dice number`
+    // }
+    // else{
+    //     para1.innerHTML += ` Sorry the dice number below 6`
+    // }
+
+// 7) Write a program that simulates a coin toss using random()
+//  method of JS Math class. Display the value of coin in your
+//  browser.
+
+    
