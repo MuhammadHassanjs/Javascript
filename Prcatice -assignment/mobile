@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phone Shop</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  .phone-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+  }
+  .phone-box {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  .phone-box:hover {
+    transform: translateY(-5px);
+  }
+  .phone-info {
+    margin-bottom: 10px;
+  }
+  .phone-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+  }
+  .add-to-cart-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .add-to-cart-btn:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+<div class="phone-container" id="phoneContainer"></div>
+<a href="checkout.html">Checkout</a>
+<script>
+ const phones = [
+    {
+        brand: 'Samsung',
+        model: 'S20',
+        ram: 8,
+        rom: 256,
+        camera: '20 megapixel',
+        price: 15000
+    },
+    {
+        brand: 'Xiomi',
+        model: 'note10',
+        ram: 4,
+        rom: 64,
+        camera: '10 megapixel',
+        price: 15000
+    },
+    {
+        brand: 'Infinix',
+        model: 'z10',
+        ram: 2,
+        rom: 16,
+        camera: '5 megapixel',
+        price: 15000
+    },
+    {
+        brand: 'Tecno',
+        model: 'spark10',
+        ram: 12,
+        rom: 512,
+        camera: '25 megapixel',
+        price: 15000
+    },
+    {
+        brand: 'Iphone',
+        model: '14',
+        ram: 4,
+        rom: 1024,
+        camera: '30 megapixel',
+        price: 15000
+    },
+    {
+        brand: 'Oppo',
+        model: 'F11',
+        ram: 8,
+        rom: 256,
+        camera: '20 megapixel',
+        price: 15000
+    },
+    {
+        brand: 'Vivo',
+        model: 'y20',
+        ram: 4,
+        rom: 64,
+        camera: '8 megapixel',
+        price: 15000
+    },
+    {
+        brand: 'Abdullah',
+        model: 's50',
+        ram: 50,
+        rom: 1024,
+        camera: '60 megapixel',
+        price: 300000
+    },
+
+    // Add other phone objects here...
+  ];
+
+  const phoneContainer = document.getElementById('phoneContainer');
+
+  phones.forEach((phone, index) => {
+    const phoneBox = document.createElement('div');
+    phoneBox.classList.add('phone-box');
+    phoneBox.innerHTML = `
+      <div class="phone-info">${phone.brand} ${phone.model}</div>
+      <div class="phone-info">RAM: ${phone.ram} GB</div>
+      <div class="phone-info">ROM: ${phone.rom} GB</div>
+      <div class="phone-info">Camera: ${phone.camera}</div>
+      <div class="phone-price">$${phone.price}</div>
+      <button class="add-to-cart-btn" onclick="addToCart(${index})">Add to Cart</button>
+    `;
+    phoneContainer.appendChild(phoneBox);
+  });
+
+  function addToCart(index) {
+    const selectedPhone = phones[index];
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let existingItem = cart.find(item => item.brand === selectedPhone.brand && item.model === selectedPhone.model);
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      selectedPhone.quantity = 1;
+      cart.push(selectedPhone);
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+</script>
+</body>
+</html>
