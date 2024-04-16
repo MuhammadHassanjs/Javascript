@@ -157,3 +157,69 @@
 </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout</title>
+</head>
+<body>
+<h1>Checkout</h1>
+<div id="checkoutItems"></div>
+<script>
+  const checkoutItems = document.getElementById('checkoutItems');
+  const cart = JSON.parse(localStorage.getItem('cart'));
+
+  if (cart && cart.length > 0) {
+    cart.forEach(item => {
+      const itemBox = document.createElement('div');
+      itemBox.innerHTML = `
+        <div>${item.brand} ${item.model}</div>
+        <div>Quantity: <span id="quantity_${item.brand}_${item.model}">${item.quantity}</span></div>
+        <button onclick="increaseQuantity('${item.brand}', '${item.model}')">+</button>
+        <button onclick="decreaseQuantity('${item.brand}', '${item.model}')">-</button>
+        <div>Total Price: $<span id="total_${item.brand}_${item.model}">${item.quantity * item.price}</span></div>
+      `;
+      checkoutItems.appendChild(itemBox);
+    });
+  } else {
+    checkoutItems.innerHTML = '<p>No items in the cart.</p>';
+  }
+
+  function increaseQuantity(brand, model) {
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    const itemIndex = cart.findIndex(item => item.brand === brand && item.model === model);
+    cart[itemIndex].quantity++;
+    localStorage.setItem('cart', JSON.stringify(cart));
+    document.getElementById(`quantity_${brand}_${model}`).textContent = cart[itemIndex].quantity;
+    document.getElementById(`total_${brand}_${model}`).textContent = cart[itemIndex].quantity * cart[itemIndex].price;
+  }
+
+  function decreaseQuantity(brand, model) {
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    const itemIndex = cart.findIndex(item => item.brand === brand && item.model === model);
+    if (cart[itemIndex].quantity > 1) {
+      cart[itemIndex].quantity--;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      document.getElementById(`quantity_${brand}_${model}`).textContent = cart[itemIndex].quantity;
+      document.getElementById(`total_${brand}_${model}`).textContent = cart[itemIndex].quantity * cart[itemIndex].price;
+    }
+  }
+</script>
+</body>
+</html>
+
+.box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    width: 200px;
+    float: left;
+    text-align: center;
+}
+
+button {
+    margin-top: 10px;
+}
