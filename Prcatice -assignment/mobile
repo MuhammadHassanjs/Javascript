@@ -54,6 +54,7 @@
 </style>
 </head>
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="phone-container" id="phoneContainer"></div>
 <a href="checkout.html">Checkout</a>
 <script>
@@ -148,15 +149,27 @@
     let existingItem = cart.find(item => item.brand === selectedPhone.brand && item.model === selectedPhone.model);
     if (existingItem) {
       existingItem.quantity++;
+      Swal.fire({
+  position:"top-right",
+  title: "Item quantity updated successfully",
+  icon: "success"
+    })  
     } else {
       selectedPhone.quantity = 1;
       cart.push(selectedPhone);
+      Swal.fire({
+  position:"top-right",
+  title: "Item added to cart successfully",
+  icon: "success"
+});
     }
     localStorage.setItem('cart', JSON.stringify(cart));
   }
 </script>
+
 </body>
 </html>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -168,26 +181,27 @@
 <body>
 <h1>Checkout</h1>
 <div id="checkoutItems"></div>
+<button id="butt"></button>
 <script>
   const checkoutItems = document.getElementById('checkoutItems');
   const cart = JSON.parse(localStorage.getItem('cart'));
-
+  const butt=document.getElementById("butt")
   if (cart && cart.length > 0) {
     cart.forEach(item => {
       const itemBox = document.createElement('div');
       itemBox.innerHTML = `
-        <div>${item.brand} ${item.model}</div>
+        <div>Brand : ${item.brand} <br/> Model : ${item.model}<br/> Price :${item.price}</div>
         <div>Quantity: <span id="quantity_${item.brand}_${item.model}">${item.quantity}</span></div>
+         <div>Total Price: $<span id="total_${item.brand}_${item.model}">${item.quantity * item.price}</span></div>
         <button onclick="increaseQuantity('${item.brand}', '${item.model}')">+</button>
         <button onclick="decreaseQuantity('${item.brand}', '${item.model}')">-</button>
-        <div>Total Price: $<span id="total_${item.brand}_${item.model}">${item.quantity * item.price}</span></div>
-      `;
+       
+        `;
       checkoutItems.appendChild(itemBox);
     });
   } else {
     checkoutItems.innerHTML = '<p>No items in the cart.</p>';
   }
-
   function increaseQuantity(brand, model) {
     let cart = JSON.parse(localStorage.getItem('cart'));
     const itemIndex = cart.findIndex(item => item.brand === brand && item.model === model);
