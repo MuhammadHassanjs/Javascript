@@ -1,0 +1,21 @@
+/* Custom CSS */
+
+/* Navbar */
+.navbar-brand img {
+    height: 50px; /* Adjust height as needed */
+  }
+  
+  /* Slider */
+  .carousel-item img {
+    max-height: 400px; /* Adjust max-height as needed */
+  }
+  
+  /* Products */
+  .card {
+    transition: transform 0.3s; /* Smooth card hover transition */
+  }
+  
+  .card:hover {
+    transform: scale(1.05); /* Enlarge card on hover */
+  }
+  

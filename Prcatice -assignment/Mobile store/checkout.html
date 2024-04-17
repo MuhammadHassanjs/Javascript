@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="styles.css" rel="stylesheet">
+<title>Checkout</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+.phone-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+.phone-box {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.phone-box:hover {
+  transform: translateY(-5px);
+}
+.phone-info {
+  margin-bottom: 10px;
+}
+.phone-price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #007bff;
+}
+.add-to-cart-btn,.helo {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.add-to-cart-btn:hover {
+  background-color: #0056b3;
+}
+.helo a{
+    text-decoration: none;
+    color: white;
+}
+  .helo{
+   width: 5%;
+   text-align: center;
+   margin: 0 auto;
+  }
+</style>
+
+</head>
+<body>
+<h1>Checkout</h1>
+<div id="checkoutItems" class="phone-container"></div>
+<div class="helo" id="butt"><a href="index.html">Shop More</a></div>
+<script>
+  const checkoutItems = document.getElementById('checkoutItems');
+  const cart = JSON.parse(localStorage.getItem('cart'));
+  const butt=document.getElementById("butt")
+  if (cart && cart.length > 0) {
+    cart.forEach(item => {
+      const itemBox = document.createElement('div');
+      itemBox.classList.add('phone-box');
+      itemBox.innerHTML = `
+        <div>Brand : ${item.brand} <br/> Model : ${item.model}<br/> Price :${item.price}</div>
+        <div>Quantity: <span id="quantity_${item.brand}_${item.model}">${item.quantity}</span></div>
+         <div class="phone-price">Total Price: $<span id="total_${item.brand}_${item.model}">${item.quantity * item.price}</span></div>
+        <button class="add-to-cart-btn"onclick="increaseQuantity('${item.brand}', '${item.model}')">+</button>
+        <button class="add-to-cart-btn"onclick="decreaseQuantity('${item.brand}', '${item.model}')">-</button>
+       
+        `;
+      checkoutItems.appendChild(itemBox);
+    });
+  } else {
+    checkoutItems.innerHTML = '<p>No items in the cart.</p>';
+  }
+  function increaseQuantity(brand, model) {
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    const itemIndex = cart.findIndex(item => item.brand === brand && item.model === model);
+    cart[itemIndex].quantity++;
+    localStorage.setItem('cart', JSON.stringify(cart));
+    document.getElementById(`quantity_${brand}_${model}`).textContent = cart[itemIndex].quantity;
+    document.getElementById(`total_${brand}_${model}`).textContent = cart[itemIndex].quantity * cart[itemIndex].price;
+  }
+
+  function decreaseQuantity(brand, model) {
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    const itemIndex = cart.findIndex(item => item.brand === brand && item.model === model);
+    if (cart[itemIndex].quantity > 1) {
+      cart[itemIndex].quantity--;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      document.getElementById(`quantity_${brand}_${model}`).textContent = cart[itemIndex].quantity;
+      document.getElementById(`total_${brand}_${model}`).textContent = cart[itemIndex].quantity * cart[itemIndex].price;
+    }
+  }
+</script>
+</body>
+</html>
